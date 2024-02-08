@@ -23,7 +23,7 @@ import axios from "axios";
 import { BaseURL } from "../url";
 import toast, { Toaster } from "react-hot-toast";
 const Form = () => {
-  const { token } = useContext(AuthContext);
+  const { token, auth } = useContext(AuthContext);
   //   console.log(token);
   const [name, setName] = useState("");
   const [specialize, setSpecialize] = useState("");
@@ -44,6 +44,8 @@ const Form = () => {
         }
         console.log(res);
         setView(res.data.data);
+        setName("")
+        setSpecialize("")
       })
       .catch((err) => {
         console.log(err);
@@ -158,11 +160,11 @@ const Form = () => {
             </Box>
 
             <Flex gap={3}>
-              <Button flex={1} type="submit" colorScheme="blue">
-                Submit
+              <Button isDisabled={!auth} flex={1} type="submit" colorScheme="blue">
+               {auth ? "Submit" : "Please login first" }   
               </Button>
-
-              <Button onClick={handleEveryOnes}> View all </Button>
+              {auth &&  <Button onClick={handleEveryOnes}> View all </Button> }
+               
             </Flex>
           </form>
         </Box>

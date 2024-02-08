@@ -28,13 +28,14 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         toast.success(res.data.message);
-       
 
-        if(res.data.message == "Login successful"){
-             setToken(res.data.token);
-             setAuth(true)
+        if (res.data.message == "Login successful") {
+          setToken(res.data.token);
+          setAuth(true);
         }
-        // navigate("/form");
+
+        setEmail("");
+        setPassword("");
       })
       .catch((err) => {
         console.log(err);
@@ -43,10 +44,10 @@ const Login = () => {
   };
 
   return (
-    <Container maxW="md" mt={10}>
+    <Container >
       <Toaster />
       <Center>
-        <Heading mb={3} size="lg">
+        <Heading mt={4} mb={4} size="lg">
           Login Here
         </Heading>
       </Center>
@@ -55,6 +56,7 @@ const Login = () => {
           <Box mb={4}>
             <label>Email</label>
             <Input
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)} // Update email state
               padding={2}
@@ -66,6 +68,7 @@ const Login = () => {
           <Box mb={4}>
             <label>Password</label>
             <Input
+              required
               value={pass}
               onChange={(e) => setPassword(e.target.value)} // Update pass state
               padding={2}
@@ -74,22 +77,19 @@ const Login = () => {
               placeholder="Enter your password"
             />
           </Box>
-          <Flex justifyContent={"space-between"} >
-          <Button type="submit" colorScheme="blue">
-            Login
-          </Button>
-
-           <Button onClick={()=>navigate("/form")} isDisabled={!auth} type="submit" colorScheme="blue">
-            Form Page
-          </Button>
-
+          <Flex justifyContent={"space-between"}>
+            <Button width={"full"} mb={2} type="submit" colorScheme="blue">
+              Login
+            </Button>
           </Flex>
 
           <Text>
-            Not a user please{" "}
-            <span style={{ color: "red" }}>
-              <Link to={"/"}>Register</Link>{" "}
-            </span>{" "}
+            <b>
+              Not a user please{" "}
+              <span style={{ color: "red" }}>
+                <Link to={"/"}>Register</Link>{" "}
+              </span>{" "}
+            </b>
           </Text>
         </form>
       </Box>

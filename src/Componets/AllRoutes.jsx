@@ -9,7 +9,7 @@ const AllRoutes = () => {
     <Routes>
       <Route path="/" element={<Register/>} />
       <Route path="/login" element={<Login/>} />
-      <Route path="/form" element={<Form/>} />
+      {/* <Route path="/form" element={<Form/>} /> */}
     </Routes>
   );
 }

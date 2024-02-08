@@ -1,4 +1,12 @@
-import { Container, Input, Box, Button, Text, Center, Heading } from "@chakra-ui/react";
+import {
+  Container,
+  Input,
+  Box,
+  Button,
+  Text,
+  Center,
+  Heading,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,7 +15,7 @@ import { BaseURL } from "../url";
 const Register = () => {
   const [email, setEmail] = useState("");
   const [pass, setPassword] = useState("");
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email, pass);
@@ -16,7 +24,7 @@ const Register = () => {
       .then((res) => {
         console.log(res);
         toast.success(res.data.message);
-        // navigate("/login")
+        navigate("/login")
       })
       .catch((err) => {
         toast.error(err.message);
@@ -24,10 +32,12 @@ const Register = () => {
   };
 
   return (
-    <Container maxW="md" mt={10}>
-        <Center>
-          <Heading mb={3} size="lg">Register </Heading>
-        </Center>
+    <Container>
+      <Center>
+        <Heading mt={4} mb={4} size="lg">
+          Register
+        </Heading>
+      </Center>
       <Toaster />
       <Box p={5} shadow="md" borderWidth="1px" borderRadius="md">
         <form onSubmit={handleSubmit}>
@@ -55,14 +65,16 @@ const Register = () => {
               placeholder="Enter your password"
             />
           </Box>
-          <Button  type="submit" colorScheme="blue">
+          <Button width={"full"} mb={2} type="submit" colorScheme="blue">
             Register
           </Button>
           <Text>
-            Already a user{" "}
-            <span style={{ color: "red" }}>
-              <Link to={"/login"}>Login</Link>{" "}
-            </span>{" "}
+            <b>
+              Already a user{" "}
+              <span style={{ color: "red" }}>
+                <Link to={"/login"}>Login</Link>
+              </span>
+            </b>
           </Text>
         </form>
       </Box>
