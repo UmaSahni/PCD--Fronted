@@ -16,7 +16,8 @@ It is a full stack mern application with JWT Authentication and Password hashing
 1. State Management : Context-Api
 2. Create UI : Chakra UI
 
-# Backend
+# Backend ( [Backend repository](https://github.com/UmaSahni/PDC-backend) ✨ )
+
 
 **MVC structure is followed to create backend.**
 
